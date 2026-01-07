@@ -63,11 +63,14 @@
     </div>
 
     <!-- Target Website hidden inside this frame -->
-    <!-- Allow attributes features ko enable karte hain (camera, mic, etc. agar zaroorat ho) -->
+    <!-- UPDATED: Removed 'sandbox' attribute completely. 
+         Sandbox often blocks session cookies required for login redirects.
+         Running as a standard iframe gives the best chance for cookies to work. -->
     <iframe 
         id="content-frame" 
         src="https://web.whatscloudy.net" 
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; camera; microphone" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; camera; microphone; geolocation" 
+        referrerpolicy="no-referrer-when-downgrade"
         allowfullscreen>
     </iframe>
 
