@@ -5,26 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mathaniya Technologies | Premium Marketing Solution</title>
     
-    <!-- FAST LOADING: Sabse pehle Hero Banner aur Profile Image ko preload karna -->
+    <!-- FAST LOADING: Critical Assets Preload -->
     <link rel="preload" as="image" href="https://lh3.googleusercontent.com/d/1CP-Jw9zdX4h9-P-MVl_9QMXM9sZlTejO" fetchpriority="high">
     <link rel="preload" as="image" href="https://lh3.googleusercontent.com/d/1Pb0DfsVdMkBDNCBDz8OJ6VFXXj7ycy_d">
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&family=Outfit:wght@700;800;900&family=Kaushan+Script&family=Righteous&family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&family=Outfit:wght@700;800;900&family=Kaushan+Script&family=Righteous&family=Bebas+Neue&display=block" rel="stylesheet">
+    
     <style>
         body { font-family: 'Hind', sans-serif; overflow-x: hidden; }
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
+        /* BRAND TITLE - NO BLINKING */
         .brand-main-title {
-            font-family: 'Bebas Neue', cursive;
+            font-family: 'Bebas Neue', Impact, 'Arial Narrow', sans-serif; 
             background: linear-gradient(135deg, #059669 0%, #10b981 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            letter-spacing: 0.05em; 
+            letter-spacing: 0.03em; 
             display: inline-block;
             line-height: 1;
+            opacity: 0;
+            animation: fadeInTitle 0.4s ease-in forwards;
+        }
+
+        @keyframes fadeInTitle {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
         
         .brand-subtitle {
@@ -41,16 +50,16 @@
         /* Language Switcher */
         .lang-switch-container {
             display: flex; background: #f1f5f9; padding: 2px; border-radius: 9999px;
-            position: relative; cursor: pointer; width: 55px; height: 24px; align-items: center;
+            position: relative; cursor: pointer; width: 45px; height: 20px; align-items: center;
             border: 1px solid #e2e8f0; flex-shrink: 0;
         }
         @media (min-width: 768px) { .lang-switch-container { width: 90px; height: 38px; } }
         .lang-slider {
-            position: absolute; width: 24px; height: 18px; background: #059669; border-radius: 9999px;
+            position: absolute; width: 20px; height: 16px; background: #059669; border-radius: 9999px;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); left: 2px;
         }
         @media (min-width: 768px) { .lang-slider { width: 42px; height: 32px; } }
-        .lang-switch-container.is-hi .lang-slider { left: calc(100% - 26px); }
+        .lang-switch-container.is-hi .lang-slider { left: calc(100% - 22px); }
         @media (min-width: 768px) { .lang-switch-container.is-hi .lang-slider { left: calc(100% - 44px); } }
         
         .lang-label { flex: 1; text-align: center; font-size: 7px; font-weight: 900; z-index: 10; }
@@ -58,7 +67,13 @@
         .lang-label.active { color: white; }
         .lang-label.inactive { color: #64748b; }
 
-        .wa-3d-btn-green { background: linear-gradient(135deg, #25D366, #128C7E); color: white; box-shadow: 0 2px 0 #075E54; transition: all 0.2s; }
+        .wa-3d-btn-green { 
+            background: linear-gradient(135deg, #25D366, #128C7E); 
+            color: white; 
+            box-shadow: 0 2px 0 #075E54; 
+            transition: all 0.2s; 
+            flex-shrink: 0;
+        }
         .wa-3d-btn-green:active { transform: translateY(2px); box-shadow: none; }
 
         .btn-3d-green-transparent { 
@@ -67,12 +82,33 @@
             font-family: 'Outfit', sans-serif; flex-shrink: 0;
         }
 
-        /* Ad Ticker */
+        /* Ticker */
         .ticker-wrap { width: 100%; overflow: hidden; white-space: nowrap; background: #ffffff; border-bottom: 2px solid #ecfdf5; }
         .ticker-move { display: inline-block; animation: ticker-swipe 65s linear infinite; }
         @keyframes ticker-swipe { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-50%, 0, 0); } }
         .ticker-item { display: inline-block; padding-right: 60px; font-weight: 800; }
 
+        /* Profile Frame Styling */
+        .profile-frame-new {
+            position: relative; padding: 8px; border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            background: linear-gradient(135deg, #10b981, #3b82f6);
+            box-shadow: 0 15px 30px rgba(16, 185, 129, 0.3);
+            animation: morph 6s ease-in-out infinite;
+        }
+        @keyframes morph {
+            0%, 100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+            50% { border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%; }
+        }
+
+        .img-container-new { background: white; padding: 4px; border-radius: inherit; }
+
+        .founder-banner-real {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1200');
+            background-size: cover; background-position: center; position: relative;
+        }
+
+        .hero-banner-img { width: 100%; height: auto; display: block; object-fit: contain; }
+        
         /* Modal Settings */
         .modal-overlay { 
             display: none; position: fixed; inset: 0; background: rgba(0, 0, 0, 0.85); 
@@ -84,65 +120,108 @@
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); -webkit-overflow-scrolling: touch;
         }
 
-        /* NEW PREMIUM FRAME STYLE */
-        .profile-frame-new {
-            position: relative;
-            padding: 8px;
-            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-            background: linear-gradient(135deg, #10b981, #3b82f6);
-            box-shadow: 0 15px 30px rgba(16, 185, 129, 0.3);
-            animation: morph 6s ease-in-out infinite;
-        }
-        
-        @keyframes morph {
-            0%, 100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
-            50% { border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%; }
+        /* --- FUNNY COMIC STYLE BUTTON RESTORED --- */
+        .wa-floating-btn {
+            position: fixed;
+            bottom: 5rem; /* bottom-20 approx */
+            right: 1.5rem; /* right-6 approx */
+            z-index: 9999;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            color: white;
+            border: 3px solid #000; /* Comic Outline */
+            box-shadow: 4px 4px 0px #000; /* Hard Shadow */
+            border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; /* Organic Blob Shape */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: meme-bounce 3s infinite alternate ease-in-out;
+            cursor: pointer;
+            text-decoration: none;
         }
 
-        .img-container-new {
-            background: white;
-            padding: 4px;
-            border-radius: inherit;
+        .wa-floating-btn:hover {
+            transform: scale(1.1) rotate(5deg);
+            background: #128C7E;
+            box-shadow: 6px 6px 0px #000;
         }
 
-        .founder-banner-real {
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1200');
-            background-size: cover; background-position: center; position: relative;
+        .wa-floating-btn:active {
+            transform: scale(0.9);
+            box-shadow: 2px 2px 0px #000;
+        }
+
+        /* Funny Speech Bubble */
+        .wa-funny-bubble {
+            position: absolute;
+            top: -25px;
+            left: -30px;
+            background: #fff;
+            color: #000;
+            padding: 4px 10px;
+            border-radius: 12px;
+            border: 2px solid #000;
+            font-size: 12px;
+            font-weight: 900;
+            font-family: 'Righteous', cursive;
+            box-shadow: 3px 3px 0px rgba(0,0,0,0.2);
+            animation: pop-bubble 4s infinite;
+            white-space: nowrap;
+            pointer-events: none;
+        }
+
+        @keyframes meme-bounce {
+            0% { transform: translateY(0) rotate(-3deg); border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
+            50% { transform: translateY(-10px) rotate(3deg); border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+            100% { transform: translateY(0) rotate(-3deg); border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
+        }
+
+        @keyframes pop-bubble {
+            0%, 80% { opacity: 0; transform: scale(0) rotate(-10deg); }
+            85% { opacity: 1; transform: scale(1.1) rotate(5deg); }
+            90% { transform: scale(1) rotate(0deg); }
+            95% { opacity: 1; }
+            100% { opacity: 0; transform: scale(0); }
         }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-900 pb-20 md:pb-0">
 
     <!-- Section 1: Navigation -->
-    <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-md h-[65px] md:h-[90px] flex items-center px-1 md:px-6 shadow-lg border-b border-slate-100 transition-all overflow-hidden">
-        <div class="max-w-7xl mx-auto w-full flex flex-nowrap justify-between items-center">
-            <div class="flex flex-col items-start justify-center shrink pr-1">
-                <h1 class="brand-main-title text-[15px] xs:text-[18px] sm:text-[22px] md:text-[40px] uppercase whitespace-nowrap">
+    <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-md h-[65px] md:h-[90px] flex items-center px-3 md:px-8 shadow-lg border-b border-slate-100 transition-all">
+        <div class="max-w-7xl mx-auto w-full flex justify-between items-center gap-2">
+            
+            <!-- Branding Section -->
+            <div class="flex flex-col items-start justify-center min-w-0 flex-1">
+                <h1 class="brand-main-title text-[12px] xs:text-[15px] sm:text-[22px] md:text-[40px] uppercase whitespace-nowrap overflow-hidden text-ellipsis">
                     WhatsApp Marketing Software
                 </h1>
-                <h2 class="brand-subtitle text-[8px] xs:text-[9px] sm:text-[11px] md:text-[19px] whitespace-nowrap">
+                <h2 class="brand-subtitle text-[7px] xs:text-[9px] sm:text-[11px] md:text-[19px] whitespace-nowrap">
                     by Mathaniya Technologies
                 </h2>
             </div>
 
-            <div class="flex items-center gap-1 md:gap-4 shrink-0 pl-1">
-                <button onclick="openModal('info')" class="btn-3d-green-transparent px-1.5 py-1 md:px-5 md:py-2 text-[7px] md:text-xs font-black whitespace-nowrap uppercase tracking-wider">
-                    MORE INFO
-                </button>
+            <!-- Buttons Group -->
+            <div class="flex items-center gap-1 md:gap-4 flex-shrink-0">
                 <div id="langSwitcher" class="lang-switch-container" onclick="toggleLanguage()">
                     <div class="lang-slider" id="langSlider"></div>
                     <span class="lang-label active" id="labelEn">EN</span>
                     <span class="lang-label inactive" id="labelHi">HI</span>
                 </div>
-                <a href="javascript:location.href=getWALink('JoinWhatsAppGroup')" class="wa-3d-btn-green px-1.5 py-1 md:px-5 md:py-2.5 rounded-full font-black text-[7px] md:text-xs flex items-center gap-0.5 md:gap-1 whitespace-nowrap shadow-md">
-                    <i class="fab fa-whatsapp text-[9px] md:text-lg"></i>
-                    <span data-hi="Join WhatsApp Group" data-en="Join WhatsApp Group">Join WhatsApp Group</span>
+                
+                <!-- WhatsApp Channel Button -->
+                <a href="https://whatsapp.com/channel/0029VbBwZreGOj9hJFRni906" target="_blank" class="wa-3d-btn-green px-2 py-1.5 md:px-5 md:py-2.5 rounded-full font-black text-[7px] md:text-xs flex items-center gap-1 whitespace-nowrap shadow-md">
+                    <i class="fab fa-whatsapp text-[10px] md:text-lg"></i>
+                    <span data-hi="व्हाट्सएप चैनल जॉइन करें" data-en="Join WhatsApp Channel" id="navWaBtnText">Join WhatsApp Channel</span>
                 </a>
             </div>
         </div>
     </nav>
 
-    <!-- Section 2: Modal Container (Pre-rendered) -->
+    <!-- Section 2: Modal Container (Founder only) -->
     <div id="infoModal" class="modal-overlay" onclick="if(event.target === this) closeModal()">
         <div class="modal-content relative bg-white border-none no-scrollbar">
             <button onclick="closeModal()" class="absolute top-4 right-4 bg-black/30 hover:bg-red-600 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold text-xl transition-colors z-50 shadow-lg">&times;</button>
@@ -153,54 +232,82 @@
                         <div class="founder-banner-real h-40 md:h-52 flex flex-col items-center justify-start text-center px-4 pt-6 md:pt-10">
                             <h3 class="text-white text-3xl md:text-5xl font-black drop-shadow-lg mb-1" style="font-family: 'Kaushan Script', cursive;">Mathaniya Technologies</h3>
                             <p class="text-emerald-300 font-bold text-[14px] md:text-2xl drop-shadow-md mt-1" style="font-family: 'Kaushan Script', cursive;">Leading Marketing Agency & IT Solutions</p>
-                            <p class="text-white/90 text-[12px] md:text-xl mt-2 max-w-md font-medium drop-shadow-md" style="font-family: 'Kaushan Script', cursive;">
-                                Expert in Smart AI Automation & Web Development
-                            </p>
+                            <p class="text-white/90 text-[12px] md:text-xl mt-2 max-w-md font-medium drop-shadow-md" style="font-family: 'Kaushan Script', cursive;">Expert in Smart AI Automation & Web Development</p>
                         </div>
-
                         <div class="max-w-xl mx-auto -mt-16 md:-mt-24 relative z-20 flex flex-col items-center text-center">
                             <div class="profile-frame-new mb-4">
                                 <div class="img-container-new">
-                                    <img src="https://lh3.googleusercontent.com/d/1Pb0DfsVdMkBDNCBDz8OJ6VFXXj7ycy_d" 
-                                         class="w-36 h-36 md:w-56 md:h-56 rounded-inherit object-cover" 
-                                         style="border-radius: inherit;"
-                                         alt="Founder"
-                                         decoding="sync"
-                                         loading="eager">
+                                    <img src="https://lh3.googleusercontent.com/d/1Pb0DfsVdMkBDNCBDz8OJ6VFXXj7ycy_d" class="w-36 h-36 md:w-56 md:h-56 object-cover" style="border-radius: inherit;" alt="Founder" decoding="sync">
                                 </div>
                             </div>
-                            
-                            <h2 class="text-4xl md:text-7xl font-black tracking-tight mb-2 bg-gradient-to-r from-emerald-600 to-teal-500 bg-clip-text text-transparent drop-shadow-sm" style="font-family: 'Kaushan Script', cursive;">
-                                Dinesh Mathaniya
-                            </h2>
-                            <p class="text-slate-600 font-bold text-[16px] md:text-3xl mt-1" style="font-family: 'Kaushan Script', cursive;">
-                                Founder, Mathaniya Technologies
-                            </p>
+                            <h2 class="text-4xl md:text-7xl font-black tracking-tight mb-2 bg-gradient-to-r from-emerald-600 to-teal-500 bg-clip-text text-transparent drop-shadow-sm" style="font-family: 'Kaushan Script', cursive;">Dinesh Mathaniya</h2>
+                            <p class="text-slate-600 font-bold text-[16px] md:text-3xl mt-1" style="font-family: 'Kaushan Script', cursive;">Founder, Mathaniya Technologies</p>
                             <div class="w-32 h-1 bg-gradient-to-r from-emerald-400 to-teal-400 mt-4 rounded-full"></div>
                         </div>
-
-                        <div class="p-4 md:p-10 space-y-6">
+                        
+                        <!-- EXPANDED BIO & SERVICES CONTENT -->
+                        <div class="p-4 md:p-10 space-y-8">
+                            
+                            <!-- 1. Founder Bio -->
                             <div class="bg-slate-50 p-6 md:p-10 rounded-[2.5rem] border border-slate-200 shadow-inner relative overflow-hidden text-left">
                                 <div class="absolute -top-6 -right-6 text-slate-100 text-9xl font-black select-none pointer-events-none opacity-50">"</div>
                                 <h3 class="text-2xl md:text-4xl font-black text-slate-900 mb-6 border-b-4 border-blue-500 inline-block pb-1" style="font-family: 'Kaushan Script', cursive;">About the Founder</h3>
-                                <div class="article-text text-slate-700 text-sm md:text-base leading-relaxed space-y-4 font-medium">
-                                    <p><strong>Dinesh Mathaniya</strong> is the founder of <strong>Mathaniya Technologies</strong>, with a strong focus on helping businesses grow through digital marketing, technology, and smart automation solutions.</p>
-                                    <p>His vision is to make professional digital services affordable, reliable, and accessible for every business. He believes that every brand deserves the power of high-end automation to compete in today's fast-paced market.</p>
+                                <div class="article-text text-slate-700 text-sm md:text-base leading-relaxed space-y-4 font-medium text-justify">
+                                    <p><strong>Dinesh Mathaniya</strong> is the founder of <strong>Mathaniya Technologies</strong>, with a strong focus on helping businesses grow through digital marketing, technology, and smart automation solutions. With hands-on experience in website development, WhatsApp marketing, and online branding, he is committed to delivering practical, result-oriented solutions for startups, small businesses, and growing brands.</p>
+                                    <p>His vision is to make professional digital services affordable, reliable, and accessible for every business to compete in today's fast-paced market. He believes that every brand deserves the power of high-end automation to streamline operations and maximize reach.</p>
                                 </div>
                             </div>
 
+                            <!-- 2. Detailed Services Breakdown -->
                             <div class="bg-white p-6 md:p-10 rounded-[2.5rem] border border-emerald-50 shadow-xl space-y-8 text-left">
-                                <div class="space-y-4">
-                                    <h4 class="text-xl font-black text-emerald-800 uppercase tracking-wide">WhatsApp Marketing Revolution</h4>
-                                    <p class="text-slate-600 text-sm md:text-base leading-relaxed font-medium">We provide businesses with the capability to send over 10,000 messages instantly without saving numbers, allowing for massive reach in seconds.</p>
+                                
+                                <h2 class="text-3xl md:text-4xl font-black text-center text-slate-800 mb-6" style="font-family: 'Kaushan Script', cursive;">Our Premium Services & Solutions</h2>
+
+                                <!-- Service Block 1: WhatsApp Marketing -->
+                                <div class="space-y-3">
+                                    <h4 class="text-xl font-black text-emerald-800 uppercase tracking-wide border-l-4 border-emerald-500 pl-3">1. The Power of WhatsApp Marketing</h4>
+                                    <p class="text-slate-600 text-sm md:text-base leading-relaxed text-justify font-medium">
+                                        In the rapidly evolving digital landscape, traditional marketing channels like email and SMS are seeing diminishing returns due to spam filters and low engagement. <strong>Mathaniya Technologies</strong> steps in to fill this gap with our state-of-the-art WhatsApp Marketing Software. We understand that your customers are on WhatsApp 24/7. Our tools allow you to tap into this massive user base with a staggering <strong>98% open rate</strong>, ensuring your message is not just delivered but seen and acted upon. Whether you are announcing a new product, running a festive sale, or sending critical updates, our bulk sender ensures instant delivery to thousands of contacts with a single click, bypassing the tedious process of saving numbers manually. This direct line of communication builds trust and drives immediate action.
+                                    </p>
                                 </div>
-                                <div class="space-y-4">
-                                    <h4 class="text-xl font-black text-emerald-800 uppercase tracking-wide">Digital Presence & Web Solutions</h4>
-                                    <p class="text-slate-600 text-sm md:text-base leading-relaxed font-medium">Our ₹999 professional website deal is designed for small businesses to establish a premium online presence.</p>
+
+                                <!-- Service Block 2: AI Automation -->
+                                <div class="space-y-3">
+                                    <h4 class="text-xl font-black text-emerald-800 uppercase tracking-wide border-l-4 border-emerald-500 pl-3">2. 24/7 AI Chatbot Automation</h4>
+                                    <p class="text-slate-600 text-sm md:text-base leading-relaxed text-justify font-medium">
+                                        Efficiency is the cornerstone of a successful business. Our <strong>AI-driven Chatbot technology</strong> acts as your round-the-clock sales and support agent. It never sleeps, never gets tired, and handles unlimited customer inquiries simultaneously. By automating responses to common queries, booking appointments, and guiding users through your sales funnel, you drastically reduce human error and operational costs while boosting customer satisfaction. This intelligent automation allows business owners to focus on strategy and growth while our software handles the repetitive engagement tasks seamlessly. Imagine generating leads while you sleep—that is the power of our automation.
+                                    </p>
                                 </div>
-                                <div class="space-y-4">
-                                    <h4 class="text-xl font-black text-emerald-800 uppercase tracking-wide">Automation for Future Growth</h4>
-                                    <p class="text-slate-600 text-sm md:text-base leading-relaxed font-medium">The future lies in automation. Our AI chatbots handle inquiries automatically 24/7.</p>
+
+                                <!-- Service Block 3: Lead Extraction -->
+                                <div class="space-y-3">
+                                    <h4 class="text-xl font-black text-emerald-800 uppercase tracking-wide border-l-4 border-emerald-500 pl-3">3. Targeted Lead Extraction & Filtering</h4>
+                                    <p class="text-slate-600 text-sm md:text-base leading-relaxed text-justify font-medium">
+                                        Data is the new oil, but only if it's refined. Our <strong>Group Grabber tool</strong> is a game-changer for lead generation. It allows you to extract high-quality, niche-specific contacts from WhatsApp groups relevant to your industry. Instead of shooting in the dark, you can target an audience that is already interested in your niche. Combined with our advanced <strong>Number Filter</strong>, which segregates active WhatsApp users from non-users, you ensure that every marketing rupee is spent on a valid lead, maximizing your ROI and keeping your campaigns clean and efficient. This targeted approach significantly increases conversion rates compared to cold calling.
+                                    </p>
+                                </div>
+
+                                <!-- Service Block 4: Safety Features -->
+                                <div class="space-y-3">
+                                    <h4 class="text-xl font-black text-emerald-800 uppercase tracking-wide border-l-4 border-emerald-500 pl-3">4. Advanced Anti-Block Security</h4>
+                                    <p class="text-slate-600 text-sm md:text-base leading-relaxed text-justify font-medium">
+                                        We prioritize the security of your business assets. Aggressive marketing can often lead to account bans, a nightmare for any business. <strong>Mathaniya Technologies</strong> has integrated cutting-edge <strong>Anti-Block technology</strong> that simulates human behavior. With features like variable time delays, sleep modes, and friendly sending algorithms, our software mimics manual typing and sending patterns. This 'Human Simulation' layer provides a robust shield, allowing you to scale your campaigns aggressively yet safely, maintaining the longevity and reputation of your business numbers.
+                                    </p>
+                                </div>
+
+                                <!-- Service Block 5: Web Development -->
+                                <div class="space-y-3">
+                                    <h4 class="text-xl font-black text-emerald-800 uppercase tracking-wide border-l-4 border-emerald-500 pl-3">5. Professional Web Development</h4>
+                                    <p class="text-slate-600 text-sm md:text-base leading-relaxed text-justify font-medium">
+                                        A strong digital identity goes beyond messaging; it starts with a professional online address. Our exclusive <strong>₹999 Business Website offer</strong> is designed to give every small and medium enterprise a corporate-grade digital face. In a mobile-first world, our websites are responsive, fast-loading, and SEO-friendly. We integrate your WhatsApp marketing funnel directly into your website, creating a cohesive ecosystem where visitors from the web can instantly connect with you on chat. This synergy between web presence and direct messaging creates a powerful conversion loop that drives sales and builds brand authority.
+                                    </p>
+                                </div>
+
+                                <!-- Conclusion -->
+                                <div class="bg-emerald-50 p-6 rounded-2xl border border-emerald-100">
+                                    <p class="text-emerald-900 text-sm md:text-base font-bold italic text-center">
+                                        "Mathaniya Technologies is not just a software provider; we are your growth partners. From establishing your digital footprint with a stunning website to automating your customer outreach, we provide an end-to-end ecosystem for success."
+                                    </p>
                                 </div>
 
                                 <div class="mt-10 flex flex-col md:flex-row items-center justify-between gap-6 border-t border-slate-100 pt-8">
@@ -208,7 +315,7 @@
                                         <span class="bg-slate-50 p-3 rounded-xl shadow-sm text-slate-400 hover:text-pink-500 cursor-pointer transition-colors"><i class="fab fa-instagram text-xl"></i></span>
                                         <span class="bg-slate-50 p-3 rounded-xl shadow-sm text-slate-400 hover:text-blue-500 cursor-pointer transition-colors"><i class="fab fa-facebook-f text-xl"></i></span>
                                     </div>
-                                    <a href="javascript:location.href=getWALink('DirectContactFounder')" class="w-full md:w-auto bg-[#25D366] text-white px-10 py-4 rounded-2xl font-black uppercase shadow-xl hover:scale-105 transition-all flex items-center justify-center gap-3">
+                                    <a href="javascript:location.href=getWALink('Direct Chat with Founder')" class="w-full md:w-auto bg-[#25D366] text-white px-10 py-4 rounded-2xl font-black uppercase shadow-xl hover:scale-105 transition-all flex items-center justify-center gap-3">
                                         <i class="fab fa-whatsapp text-2xl"></i> Contact Directly
                                     </a>
                                 </div>
@@ -216,31 +323,17 @@
                         </div>
                     </div>
                 </div>
-
-                <div id="infoModalContent" class="hidden p-8 text-center">
-                    <h2 class="text-2xl font-black text-emerald-800 font-['Outfit']">Software Details</h2>
-                    <p class="mt-4 text-slate-600">Leading the automation market with high-end tools.</p>
-                </div>
             </div>
         </div>
     </div>
 
-    <!-- Section 3: Hero Section (Optimized for Instant Load) -->
-    <section class="w-full p-0 m-0 leading-none relative">
-        <!-- FAST LOAD banner: Added fetchpriority, loading eager, aur zero-transition styles -->
-        <img src="https://lh3.googleusercontent.com/d/1CP-Jw9zdX4h9-P-MVl_9QMXM9sZlTejO" 
-             alt="Hero Banner" 
-             class="w-full h-auto block object-cover" 
-             style="min-height: 200px;" 
-             fetchpriority="high"
-             loading="eager"
-             onerror="this.src='https://placehold.co/1500x500/065f46/ffffff?text=Premium+Marketing';">
-        
-        <!-- Meet Founder Button - Left Positioned -->
-        <div class="absolute bottom-16 left-8 md:bottom-28 md:left-16 z-10">
-            <button onclick="openModal('founder')" class="group bg-white/5 backdrop-blur-sm border border-white/40 text-white px-8 py-3.5 md:px-14 md:py-7 rounded-full shadow-2xl hover:bg-white/15 transition-all flex items-center gap-4 active:scale-95">
-                <i class="fas fa-user-tie text-lg md:text-4xl drop-shadow-md"></i>
-                <span class="text-[16px] md:text-4xl font-black drop-shadow-lg" style="font-family: 'Kaushan Script', cursive;">Meet Founder</span>
+    <!-- Section 3: Hero Section -->
+    <section class="w-full p-0 m-0 leading-none relative bg-white">
+        <img src="https://lh3.googleusercontent.com/d/1CP-Jw9zdX4h9-P-MVl_9QMXM9sZlTejO" alt="Hero Banner" class="hero-banner-img" fetchpriority="high" loading="eager" decoding="sync" onerror="this.src='https://placehold.co/1500x500/065f46/ffffff?text=Premium+Marketing';">
+        <div class="absolute bottom-4 left-4 md:bottom-28 md:left-16 z-10">
+            <button onclick="openModal('founder')" class="group bg-white/5 backdrop-blur-sm border border-white/40 text-white px-6 py-2.5 md:px-14 md:py-7 rounded-full shadow-2xl hover:bg-white/15 transition-all flex items-center gap-2 md:gap-4 active:scale-95">
+                <i class="fas fa-user-tie text-xs md:text-4xl drop-shadow-md"></i>
+                <span class="text-[12px] md:text-4xl font-black drop-shadow-lg" style="font-family: 'Kaushan Script', cursive;">Meet Founder</span>
             </button>
         </div>
     </section>
@@ -281,16 +374,19 @@
         </div>
     </footer>
 
-    <!-- Section 8: Bottom Bar -->
+    <!-- Section 8: Bottom Sticky Bar -->
     <div class="fixed bottom-0 left-0 w-full bg-white border-t-2 border-emerald-500 shadow-2xl z-[999] py-3 px-4 flex items-center justify-between">
         <p id="bottomAdText" class="text-slate-800 font-bold text-[10px] md:text-sm truncate pr-4">Loading deals...</p>
         <a id="adBottomBtn" href="#" class="bg-emerald-600 text-white px-4 py-2 rounded-xl font-black text-[9px] md:text-xs uppercase shrink-0">ORDER</a>
     </div>
 
-    <!-- Section 9: Floating WhatsApp -->
-    <a href="javascript:location.href=getWALink('Floating')" class="fixed bottom-20 right-4 bg-[#25D366] text-white w-12 h-12 rounded-full flex items-center justify-center shadow-2xl z-[1000] hover:scale-110 transition cursor-pointer"><i class="fab fa-whatsapp text-2xl"></i></a>
+    <!-- Section 9: Floating WhatsApp - COMIC STYLE RESTORED -->
+    <a href="javascript:location.href=getWALink('General Inquiry')" class="wa-floating-btn">
+        <i class="fab fa-whatsapp text-3xl"></i>
+        <div class="wa-funny-bubble">Hi!</div>
+    </a>
 
-    <!-- FORCE CACHE -->
+    <!-- CACHE FORCE -->
     <img src="https://lh3.googleusercontent.com/d/1Pb0DfsVdMkBDNCBDz8OJ6VFXXj7ycy_d" style="display:none;" alt="Cache DP">
     <img src="https://lh3.googleusercontent.com/d/1CP-Jw9zdX4h9-P-MVl_9QMXM9sZlTejO" style="display:none;" alt="Cache Banner">
 
@@ -307,7 +403,7 @@
             features: [
                 { icon: "fa-paper-plane", en: "Bulk Sender", hi: "बल्क सेंडर", descEn: "Massive reach", descHi: "हजारों मैसेज" },
                 { icon: "fa-robot", en: "AI Chatbot", hi: "AI चैटबॉट", descEn: "24/7 Replies", descHi: "ऑटो रिप्लाई" },
-                { icon: "fa-users-viewfinder", en: "Group Grabber", hi: "ग्रुप ग्रैबर", descEn: "Extract data", descHi: "डाटा निकालें" },
+                { icon: "fa-users-viewfinder", en: "Group Grabber", hi: "ग्रुप ग्रैबर", descEn: "Extract data", descHi: "ग्रुप डाटा निकालें" },
                 { icon: "fa-user-check", en: "Number Filter", hi: "नंबर फ़िल्टर", descEn: "Check active", descHi: "नंबर जांचें" },
                 { icon: "fa-shield-halved", en: "Anti-Block", hi: "एंटी-ब्लॉक", descEn: "Safe tools", descHi: "सुरक्षित टूल्स" }
             ],
@@ -319,8 +415,10 @@
 
         let currentLang = 'en';
 
-        function getWALink(type) {
-            return `https://wa.me/${SITE_CONFIG.whatsappNumber}?text=${encodeURIComponent('Hi Mathaniya Technologies, I want to ' + type)}`;
+        // Updated for direct WhatsApp messaging
+        function getWALink(message) {
+            const text = `Hi Mathaniya Technologies, I want to ${message}`;
+            return `https://wa.me/${SITE_CONFIG.whatsappNumber}?text=${encodeURIComponent(text)}`;
         }
 
         function toggleLanguage() {
@@ -341,25 +439,15 @@
         function openModal(type) {
             const overlay = document.getElementById('infoModal');
             const founderContent = document.getElementById('founderModalContent');
-            const infoContent = document.getElementById('infoModalContent');
-
-            founderContent.classList.add('hidden');
-            infoContent.classList.add('hidden');
-
-            if(type === 'founder') {
-                founderContent.classList.remove('hidden');
-            } else {
-                infoContent.classList.remove('hidden');
+            
+            if(type === 'founder') { 
+                founderContent.classList.remove('hidden'); 
+                overlay.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
             }
-
-            overlay.style.display = 'flex';
-            document.body.style.overflow = 'hidden';
         }
 
-        function closeModal() { 
-            document.getElementById('infoModal').style.display = 'none'; 
-            document.body.style.overflow = 'auto';
-        }
+        function closeModal() { document.getElementById('infoModal').style.display = 'none'; document.body.style.overflow = 'auto'; }
 
         function renderUI() {
             const tickerHtml = SITE_CONFIG.tickerAds.map(ad => `
@@ -377,6 +465,11 @@
                         <a href="${getWALink('Order ' + f.en)}" class="block w-full bg-slate-800 text-white py-1.5 rounded-lg font-black text-[8px] md:text-xs uppercase">Order</a>
                     </div>
                 </div>`).join('');
+
+            const groupBtnText = document.getElementById('navWaBtnText');
+            if (groupBtnText) {
+                groupBtnText.innerText = currentLang === 'hi' ? groupBtnText.getAttribute('data-hi') : groupBtnText.getAttribute('data-en');
+            }
         }
 
         let adIdx = 0;
